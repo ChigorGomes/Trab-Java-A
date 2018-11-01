@@ -26,8 +26,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" pref="694" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,7 +48,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jButton4" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton3" linkSize="1" min="-2" max="-2" attributes="0"/>
@@ -84,7 +84,7 @@
                       <Component id="jButton4" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton6" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="125" max="32767" attributes="0"/>
+                  <EmptySpace pref="106" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -92,32 +92,32 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar Equipamentos"/>
+            <Property name="text" type="java.lang.String" value="CADASTRAR EQUIPAMENTO"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Buscar Equipamento"/>
+            <Property name="text" type="java.lang.String" value="BUSCAR EQUIPAMENTO"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Abertura de Chamadas"/>
+            <Property name="text" type="java.lang.String" value="ABERTURA DE MANUTEN&#xc7;&#xc3;O"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Gerenciamento de Chamadas"/>
+            <Property name="text" type="java.lang.String" value="GERENCIAMENTO DE MANUTEN&#xc7;&#xc3;O"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Editar Perfil"/>
+            <Property name="text" type="java.lang.String" value="EDITAR PERFIL"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar  Tipo de Equipamentos"/>
+            <Property name="text" type="java.lang.String" value="CADASTRAR TIPOS DE EQUIPAMENTOS"/>
           </Properties>
         </Component>
       </SubComponents>
