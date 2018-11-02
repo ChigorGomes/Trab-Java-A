@@ -15,7 +15,7 @@ import java.sql.SQLException;
  *
  * @author higor
  */
-public class Conexao {
+public class BancoDeDados {
     public Statement stm;
     public ResultSet rs;
     private static String url = "jdbc:mysql://localhost:3306/ControleEquipamentos";
