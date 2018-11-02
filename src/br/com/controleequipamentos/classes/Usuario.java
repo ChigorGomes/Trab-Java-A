@@ -10,19 +10,20 @@ package br.com.controleequipamentos.classes;
  * @author higor
  */
 public class Usuario {
-    private int idLogin;
+    private int idConta;
     private String nome;
-    private String email;
-    private int idTipoLogin;
-    
-    public Usuario(){}
+    private String usuario;
+    private String senha;
+    private String tipoUsuario;
 
-    public int getIdLogin() {
-        return idLogin;
+    public Usuario(){}
+    
+    public int getIdComta() {
+        return idConta;
     }
 
-    public void setIdLogin(int idLogin) {
-        this.idLogin = idLogin;
+    public void setIdComta(int idComta) {
+        this.idConta = idComta;
     }
 
     public String getNome() {
@@ -33,20 +34,28 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public int getIdTipoLogin() {
-        return idTipoLogin;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setIdTipoLogin(int idTipoLogin) {
-        this.idTipoLogin = idTipoLogin;
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
     
     
