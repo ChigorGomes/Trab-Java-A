@@ -5,17 +5,29 @@
  */
 package br.com.controleequipamentos.Telas;
 
+import br.com.controleequipamentos.classes.DAO.TipoEquipamentoDAO;
+import br.com.controleequipamentos.classes.TipoEquipamentos;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author higor
  */
 public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
 
+    TipoEquipamentoDAO equipamentoDAO = new TipoEquipamentoDAO();
+    TipoEquipamentos tipoEquipamentos= new TipoEquipamentos();
+    String aux;
     /**
      * Creates new form TelaCadastroEquipamento
      */
-    public TelaCadastroTipoEquipamento() {
+    public TelaCadastroTipoEquipamento(String nome) {
         initComponents();
+        aux=nome;
+    }
+
+    private TelaCadastroTipoEquipamento() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -44,19 +56,21 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
         jLabel2.setText("NOME EQUIPAMENTO");
 
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 87, Short.MAX_VALUE)
@@ -102,6 +116,20 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        // TODO add your handling code here:
+        if (jTextFieldNomeEquipamento.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Insira o nome do Equipamento");
+            jTextFieldNomeEquipamento.setText("");
+            jTextFieldNomeEquipamento.requestFocus();
+        } else {
+            tipoEquipamentos.setNomeEquipamento(jTextFieldNomeEquipamento.getText());
+            equipamentoDAO.salvar(tipoEquipamentos);
+            new TelaMenu(aux).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     /**
      * @param args the command line arguments

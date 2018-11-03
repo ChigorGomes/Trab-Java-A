@@ -5,17 +5,38 @@
  */
 package br.com.controleequipamentos.Telas;
 
+import br.com.controleequipamentos.classes.DAO.DescricaoDAO;
+import br.com.controleequipamentos.classes.DAO.TipoEquipamentoDAO;
+import br.com.controleequipamentos.classes.Descricao;
+import br.com.controleequipamentos.classes.TipoEquipamentos;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author higor
  */
 public class TelaCadastroEquipamento extends javax.swing.JFrame {
 
+    TipoEquipamentos tipoEquipamentos = new TipoEquipamentos();
+    TipoEquipamentoDAO equipamentoDAO = new TipoEquipamentoDAO();
+    Descricao descricao = new Descricao();
+    DescricaoDAO descricaoDAO = new DescricaoDAO();
+    Vector<TipoEquipamentos> listaEquip = null;
+    int cod = 0;
+
     /**
      * Creates new form TelaCadastroEquipamento
      */
     public TelaCadastroEquipamento() {
         initComponents();
+
+        listaEquip = equipamentoDAO.mostraEquipamentos();
+        DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel(listaEquip);
+
+        jComboBoxEquipamentos.setModel(modeloCombo);
+
     }
 
     /**
@@ -29,7 +50,7 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxEquipamentos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescricao = new javax.swing.JTextArea();
         jFormattedTextFieldData = new javax.swing.JFormattedTextField();
@@ -46,6 +67,28 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CADASTRO EQUIPAMENTO");
+
+        jComboBoxEquipamentos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxEquipamentosItemStateChanged(evt);
+            }
+        });
+        jComboBoxEquipamentos.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jComboBoxEquipamentosMouseWheelMoved(evt);
+            }
+        });
+        jComboBoxEquipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jComboBoxEquipamentosMousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxEquipamentosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jComboBoxEquipamentosMouseEntered(evt);
+            }
+        });
 
         jTextAreaDescricao.setColumns(20);
         jTextAreaDescricao.setRows(5);
@@ -71,6 +114,11 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         jLabel6.setText("LOCAL");
 
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,20 +135,17 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(155, 155, 155))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jFormattedTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(154, 154, 154))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 74, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jComboBoxEquipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(155, 155, 155))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jFormattedTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(154, 154, 154))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jTextFieldLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(154, 154, 154))
@@ -113,7 +158,7 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
                 .addGap(220, 220, 220))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBox1, jFormattedTextFieldData, jTextFieldLocal});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBoxEquipamentos, jFormattedTextFieldData, jTextFieldLocal});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +167,7 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxEquipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -140,7 +185,7 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jFormattedTextFieldData, jTextFieldLocal});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBoxEquipamentos, jFormattedTextFieldData, jTextFieldLocal});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,6 +208,83 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        // TODO add your handling code here:
+        if (cod <= 0) {
+            JOptionPane.showMessageDialog(null, "Selecione um equipamento!");
+
+        } else if (jComboBoxEquipamentos.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um equipamento!");
+        } else if (jFormattedTextFieldData.getText().equalsIgnoreCase("  /  /    ")) {
+            JOptionPane.showMessageDialog(null, "Preencha a Data!");
+
+        } else if (jTextFieldLocal.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha o local!");
+
+        } else if (jTextAreaDescricao.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha a descrição!");
+
+        } else {
+            descricao.setDescricao(jTextAreaDescricao.getText());
+            descricao.setLocalDesc(jTextFieldLocal.getText());
+            descricao.setDataDesc(jFormattedTextFieldData.getText());
+            descricao.setIdEquipamento(cod);
+            descricaoDAO.salvar(descricao);
+        }
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jComboBoxEquipamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxEquipamentosMouseClicked
+        // TODO add your handling code here:
+        if (jComboBoxEquipamentos.getSelectedIndex() > 0) {
+            String nome = "" + jComboBoxEquipamentos.getModel().getSelectedItem();
+            cod = descricaoDAO.buscaEquipamento(nome);
+            System.out.println(cod);
+
+        }
+
+
+    }//GEN-LAST:event_jComboBoxEquipamentosMouseClicked
+
+    private void jComboBoxEquipamentosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxEquipamentosItemStateChanged
+        // TODO add your handling code here:
+        String nome = "" + jComboBoxEquipamentos.getModel().getSelectedItem();
+        cod = descricaoDAO.buscaEquipamento(nome);
+        System.out.println(cod);
+
+
+    }//GEN-LAST:event_jComboBoxEquipamentosItemStateChanged
+
+    private void jComboBoxEquipamentosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxEquipamentosMousePressed
+        // TODO add your handling code here:
+        if (jComboBoxEquipamentos.getSelectedIndex() > 0) {
+            String nome = "" + jComboBoxEquipamentos.getModel().getSelectedItem();
+            cod = descricaoDAO.buscaEquipamento(nome);
+            System.out.println(cod);
+
+        }
+
+    }//GEN-LAST:event_jComboBoxEquipamentosMousePressed
+
+    private void jComboBoxEquipamentosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxEquipamentosMouseEntered
+
+        if (jComboBoxEquipamentos.getSelectedIndex() > 0) {
+            String nome = "" + jComboBoxEquipamentos.getModel().getSelectedItem();
+            cod = descricaoDAO.buscaEquipamento(nome);
+            System.out.println(cod);
+
+        }
+    }//GEN-LAST:event_jComboBoxEquipamentosMouseEntered
+
+    private void jComboBoxEquipamentosMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jComboBoxEquipamentosMouseWheelMoved
+        // TODO add your handling code here:
+        if (jComboBoxEquipamentos.getSelectedIndex() > 0) {
+            String nome = "" + jComboBoxEquipamentos.getModel().getSelectedItem();
+            cod = descricaoDAO.buscaEquipamento(nome);
+            System.out.println(cod);
+
+        }
+    }//GEN-LAST:event_jComboBoxEquipamentosMouseWheelMoved
+
     /**
      * @param args the command line arguments
      */
@@ -177,16 +299,24 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroEquipamento.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroEquipamento.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroEquipamento.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroEquipamento.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -200,7 +330,7 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxEquipamentos;
     private javax.swing.JFormattedTextField jFormattedTextFieldData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

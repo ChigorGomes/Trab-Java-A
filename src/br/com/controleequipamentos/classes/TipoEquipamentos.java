@@ -9,11 +9,18 @@ package br.com.controleequipamentos.classes;
  *
  * @author higor
  */
-public class Equipamentos {
+public class TipoEquipamentos {
     private int idEquipamentos;
     private String nomeEquipamento;
 
-    public Equipamentos(){}
+    public TipoEquipamentos(int idEquipamentos, String nomeEquipamento) {
+        this.idEquipamentos = idEquipamentos;
+        this.nomeEquipamento = nomeEquipamento;
+    }
+
+    
+    
+    public TipoEquipamentos(){}
     
     public int getIdEquipamentos() {
         return idEquipamentos;
@@ -31,5 +38,14 @@ public class Equipamentos {
         this.nomeEquipamento = nomeEquipamento;
     }
     
+    /**
+     * Pega o nome do médico
+     *
+     * @return String nome do médico
+     */
+    @Override
+    public String toString() {
+        return this.nomeEquipamento;
+    }
     
 }

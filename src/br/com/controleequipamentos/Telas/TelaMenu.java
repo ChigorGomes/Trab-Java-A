@@ -5,17 +5,31 @@
  */
 package br.com.controleequipamentos.Telas;
 
+import br.com.controleequipamentos.classes.DAO.UsuarioDAO;
+import br.com.controleequipamentos.classes.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author higor
  */
 public class TelaMenu extends javax.swing.JFrame {
 
+    Usuario user = new Usuario();
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    String aux;
+    TelaCadastroEquipamento cadastroEquipamento = new TelaCadastroEquipamento();
+
     /**
      * Creates new form Menu
      */
-    public TelaMenu() {
+    public TelaMenu(String nome) {
         initComponents();
+        aux = nome;
+    }
+
+    private TelaMenu() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -28,68 +42,87 @@ public class TelaMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jButtonCadastroEquipamento = new javax.swing.JButton();
+        jButtonBuscaEquipamento = new javax.swing.JButton();
+        jButtonManutencao = new javax.swing.JButton();
+        jButtonGerenciamentoManutencao = new javax.swing.JButton();
+        jButtonEditaPerfil = new javax.swing.JButton();
+        jButtonCadastraTipoEquipamento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jButton1.setText("CADASTRAR EQUIPAMENTO");
+        jButtonCadastroEquipamento.setText("CADASTRAR EQUIPAMENTO");
+        jButtonCadastroEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastroEquipamentoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("BUSCAR EQUIPAMENTO");
+        jButtonBuscaEquipamento.setText("BUSCAR EQUIPAMENTO");
 
-        jButton3.setText("ABERTURA DE MANUTENÇÃO");
+        jButtonManutencao.setText("ABERTURA DE MANUTENÇÃO");
+        jButtonManutencao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonManutencaoActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("GERENCIAMENTO DE MANUTENÇÃO");
+        jButtonGerenciamentoManutencao.setText("GERENCIAMENTO DE MANUTENÇÃO");
 
-        jButton5.setText("EDITAR PERFIL");
+        jButtonEditaPerfil.setText("EDITAR PERFIL");
 
-        jButton6.setText("CADASTRAR TIPOS DE EQUIPAMENTOS");
+        jButtonCadastraTipoEquipamento.setText("CADASTRAR TIPOS DE EQUIPAMENTOS");
+        jButtonCadastraTipoEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastraTipoEquipamentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1))
-                .addGap(69, 69, 69)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jButton6))
-                .addGap(61, 61, 61))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonCadastroEquipamento)
+                        .addGap(69, 69, 69))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonGerenciamentoManutencao)
+                            .addComponent(jButtonCadastraTipoEquipamento))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonBuscaEquipamento, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonEditaPerfil, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonManutencao, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4, jButton5, jButton6});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonBuscaEquipamento, jButtonCadastraTipoEquipamento, jButtonCadastroEquipamento, jButtonEditaPerfil, jButtonGerenciamentoManutencao, jButtonManutencao});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonCadastroEquipamento)
+                    .addComponent(jButtonBuscaEquipamento))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5))
-                .addGap(28, 28, 28)
+                    .addComponent(jButtonEditaPerfil)
+                    .addComponent(jButtonCadastraTipoEquipamento))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton6))
-                .addContainerGap(106, Short.MAX_VALUE))
+                    .addComponent(jButtonManutencao)
+                    .addComponent(jButtonGerenciamentoManutencao))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4, jButton5, jButton6});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonBuscaEquipamento, jButtonCadastraTipoEquipamento, jButtonCadastroEquipamento, jButtonEditaPerfil, jButtonGerenciamentoManutencao, jButtonManutencao});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,7 +130,7 @@ public class TelaMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,6 +144,46 @@ public class TelaMenu extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCadastroEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroEquipamentoActionPerformed
+        // TODO add your handling code here:
+        if (usuarioDAO.controleAcessoUsuarioSecretaria(aux) == true) {
+            if (cadastroEquipamento == null) {
+                cadastroEquipamento.setVisible(true);
+                cadastroEquipamento.setResizable(false);
+            } else {
+                cadastroEquipamento.setVisible(true);
+                cadastroEquipamento.setResizable(false);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão!");
+        }
+
+    }//GEN-LAST:event_jButtonCadastroEquipamentoActionPerformed
+
+    private void jButtonCadastraTipoEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastraTipoEquipamentoActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        if (usuarioDAO.controleAcessoUsuarioSecretaria(aux) == true) {
+            if (new TelaCadastroTipoEquipamento(aux) == null) {
+                new TelaCadastroTipoEquipamento(aux).setVisible(true);
+                new TelaCadastroTipoEquipamento(aux).setResizable(false);
+
+            } else {
+                new TelaCadastroTipoEquipamento(aux).setVisible(true);
+                new TelaCadastroTipoEquipamento(aux).setResizable(false);
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão!");
+        }
+    }//GEN-LAST:event_jButtonCadastraTipoEquipamentoActionPerformed
+
+    private void jButtonManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonManutencaoActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jButtonManutencaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,12 +222,12 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonBuscaEquipamento;
+    private javax.swing.JButton jButtonCadastraTipoEquipamento;
+    private javax.swing.JButton jButtonCadastroEquipamento;
+    private javax.swing.JButton jButtonEditaPerfil;
+    private javax.swing.JButton jButtonGerenciamentoManutencao;
+    private javax.swing.JButton jButtonManutencao;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

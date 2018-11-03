@@ -142,10 +142,9 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxConta">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Administrador"/>
-                <StringItem index="1" value="Secret&#xe1;ria"/>
-                <StringItem index="2" value="Suporte"/>
+              <StringArray count="2">
+                <StringItem index="0" value="Secret&#xe1;ria"/>
+                <StringItem index="1" value="Suporte"/>
               </StringArray>
             </Property>
             <Property name="selectedIndex" type="int" value="-1"/>

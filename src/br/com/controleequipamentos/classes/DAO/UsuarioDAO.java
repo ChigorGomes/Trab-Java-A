@@ -52,9 +52,7 @@ public class UsuarioDAO extends BancoDeDados {
         }
 
     }
-    
-    
-    
+
     /**
      * Método acessar
      *
@@ -78,6 +76,50 @@ public class UsuarioDAO extends BancoDeDados {
 
             JOptionPane.showMessageDialog(null, e);
 
+            return false;
+        }
+    }
+
+    public boolean controleAcessoUsuarioSecretaria(String nome) {
+
+        try {
+            Statement st = conexao.createStatement();
+            ResultSet resultado = st.executeQuery("SELECT * FROM login WHERE usuario='" + nome + "'");
+            resultado.first();
+            if (resultado.getString("tipousuario").equals("Secretária")) {
+                return true;
+            } else {
+                return false;
+            }
+            /*
+                Administrador
+                Secretária
+                Suporte
+             */
+
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public boolean controleAcessoUsuarioSuporte(String nome) {
+
+        try {
+            Statement st = conexao.createStatement();
+            ResultSet resultado = st.executeQuery("SELECT * FROM login WHERE usuario='" + nome + "'");
+            resultado.first();
+            if (resultado.getString("tipousuario").equals("Suporte")) {
+                return true;
+            } else {
+                return false;
+            }
+            /*
+                Administrador
+                Secretária
+                Suporte
+             */
+
+        } catch (SQLException ex) {
             return false;
         }
     }

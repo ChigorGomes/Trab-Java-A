@@ -62,7 +62,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabelEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelEmail.setText("SENHA");
 
-        jComboBoxConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Secretária", "Suporte" }));
+        jComboBoxConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Secretária", "Suporte" }));
         jComboBoxConta.setSelectedIndex(-1);
 
         USUÁRIO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -200,7 +200,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             usuario.setSenha(senha);
             usuario.setTipoUsuario((String) jComboBoxConta.getSelectedItem());
             if (usuarioDAO.salvar(usuario) == true) {
-                TelaMenu tela = new TelaMenu();
+                TelaMenu tela = new TelaMenu(jTextFieldUsuario.getText());
                 tela.setVisible(true);
                 dispose();
             } else {

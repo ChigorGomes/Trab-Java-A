@@ -190,7 +190,7 @@ public class TelaLogin extends javax.swing.JFrame {
             user.setSenha(senha);
             boolean acesso = usuarioDAO.acessar(user);
             if (acesso == true) {
-                new TelaMenu().setVisible(true);
+                new TelaMenu(jTextFieldUsuario.getText()).setVisible(true);
                 dispose();
             } else {
                 jTextFieldUsuario.setText("");
