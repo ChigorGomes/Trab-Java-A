@@ -10,16 +10,34 @@ package br.com.controleequipamentos.classes;
  * @author higor
  */
 public class Manutencao {
+
     private int idManutencao;
     private int idTombamento;
     private String descricaoDefeito;
-    private String data;
-    private int idStatus;
+    private String dataDefeito;
     private String descricaoSolucao;
     private int loginSolicitante;
     private int loginSolucionador;
-    
-    public Manutencao(){
+    private String dataConserto;
+    private String status;
+
+    public String getDataConserto() {
+        return dataConserto;
+    }
+
+    public void setDataConserto(String dataConserto) {
+        this.dataConserto = dataConserto;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Manutencao() {
     }
 
     public int getIdManutencao() {
@@ -46,20 +64,12 @@ public class Manutencao {
         this.descricaoDefeito = descricaoDefeito;
     }
 
-    public String getData() {
-        return data;
+    public String getDataDefeito() {
+        return dataDefeito;
     }
 
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public int getIdStatus() {
-        return idStatus;
-    }
-
-    public void setIdStatus(int idStatus) {
-        this.idStatus = idStatus;
+    public void setDataDefeito(String dataDefeito) {
+        this.dataDefeito = dataDefeito;
     }
 
     public String getDescricaoSolucao() {
@@ -85,5 +95,5 @@ public class Manutencao {
     public void setLoginSolucionador(int loginSolucionador) {
         this.loginSolucionador = loginSolucionador;
     }
-    
+
 }

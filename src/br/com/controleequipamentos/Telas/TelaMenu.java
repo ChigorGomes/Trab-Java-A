@@ -18,7 +18,6 @@ public class TelaMenu extends javax.swing.JFrame {
     Usuario user = new Usuario();
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     String aux;
-  
 
     /**
      * Creates new form Menu
@@ -60,6 +59,11 @@ public class TelaMenu extends javax.swing.JFrame {
         });
 
         jButtonBuscaEquipamento.setText("BUSCAR EQUIPAMENTO");
+        jButtonBuscaEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscaEquipamentoActionPerformed(evt);
+            }
+        });
 
         jButtonManutencao.setText("ABERTURA DE MANUTENÇÃO");
         jButtonManutencao.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +73,11 @@ public class TelaMenu extends javax.swing.JFrame {
         });
 
         jButtonGerenciamentoManutencao.setText("GERENCIAMENTO DE MANUTENÇÃO");
+        jButtonGerenciamentoManutencao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGerenciamentoManutencaoActionPerformed(evt);
+            }
+        });
 
         jButtonEditaPerfil.setText("EDITAR PERFIL");
         jButtonEditaPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +163,7 @@ public class TelaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (usuarioDAO.controleAcessoUsuarioSecretaria(aux) == true) {
             if (new TelaCadastroEquipamento(aux) == null) {
-               new TelaCadastroEquipamento(aux).setVisible(true);
+                new TelaCadastroEquipamento(aux).setVisible(true);
                 new TelaCadastroEquipamento(aux).setResizable(false);
             } else {
                 new TelaCadastroEquipamento(aux).setVisible(true);
@@ -187,6 +196,20 @@ public class TelaMenu extends javax.swing.JFrame {
     private void jButtonManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonManutencaoActionPerformed
         // TODO add your handling code here:
         // TODO add your handling code here:
+        if (usuarioDAO.controleAcessoUsuarioSecretaria(aux) == true) {
+            if (new TelaGerenciamentoManutencaoDefeito(aux) == null) {
+                new TelaGerenciamentoManutencaoDefeito(aux).setVisible(true);
+                new TelaGerenciamentoManutencaoDefeito(aux).setResizable(false);
+
+            } else {
+                new TelaGerenciamentoManutencaoDefeito(aux).setVisible(true);
+                new TelaGerenciamentoManutencaoDefeito(aux).setResizable(false);
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão!");
+        }
+
 
     }//GEN-LAST:event_jButtonManutencaoActionPerformed
 
@@ -195,6 +218,27 @@ public class TelaMenu extends javax.swing.JFrame {
         new TelaEditaCadastro(aux).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonEditaPerfilActionPerformed
+
+    private void jButtonGerenciamentoManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerenciamentoManutencaoActionPerformed
+        // TODO add your handling code here:
+        if (usuarioDAO.controleAcessoUsuarioSuporte(aux) == true) {
+            if (new TelaGerenciamentoManutencaoConserto(aux) == null) {
+                new TelaGerenciamentoManutencaoConserto(aux).setVisible(true);
+                new TelaGerenciamentoManutencaoConserto(aux).setResizable(false);
+
+            } else {
+                new TelaGerenciamentoManutencaoConserto(aux).setVisible(true);
+                new TelaGerenciamentoManutencaoConserto(aux).setResizable(false);
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão!");
+        }
+    }//GEN-LAST:event_jButtonGerenciamentoManutencaoActionPerformed
+
+    private void jButtonBuscaEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscaEquipamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBuscaEquipamentoActionPerformed
 
     /**
      * @param args the command line arguments

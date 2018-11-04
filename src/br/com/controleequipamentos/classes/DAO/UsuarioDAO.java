@@ -126,6 +126,7 @@ public class UsuarioDAO extends BancoDeDados {
     }
 
     //select nomeequipamento from equipamentos,descricao where  equipamentos.idequipamento= descricao.idequipamento;
+    //select nomeequipamento from equipamentos,descricao,manutencao where  equipamentos.idequipamento= descricao.idequipamento and descricao.idtombamento=manutencao.idtombamento;
     public boolean alterar(Usuario usu) {
 
         try {

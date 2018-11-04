@@ -6,7 +6,6 @@
 package br.com.controleequipamentos.classes.DAO;
 
 import br.com.controleequipamentos.classes.TipoEquipamentos;
-import br.com.controleequipamentos.classes.Usuario;
 import br.com.controleequipamentos.conexao.BD.BancoDeDados;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class TipoEquipamentoDAO extends BancoDeDados {
 
+    int idEquipamento = 0;
+    int idTomba=0;
     TipoEquipamentos tipoEquipamentos = new TipoEquipamentos();
 
     public TipoEquipamentoDAO() {
@@ -59,8 +60,8 @@ public class TipoEquipamentoDAO extends BancoDeDados {
             while (resultado.next()) {
                 int codigo = resultado.getInt("idequipamento");
                 String nome = resultado.getString("nomeequipamento");
-                
-                TipoEquipamentos equipamentos= new TipoEquipamentos(codigo, nome);
+
+                TipoEquipamentos equipamentos = new TipoEquipamentos(codigo, nome);
 
                 listaEquipam.add(equipamentos);
             }
@@ -69,4 +70,59 @@ public class TipoEquipamentoDAO extends BancoDeDados {
             throw new RuntimeException(ex);
         }
     }
+
+    public int recuperaIdEquipamento(int idTombamento) {
+        try {
+            Statement st = conexao.createStatement();
+            ResultSet resultado = st.executeQuery("SELECT * FROM descricao  WHERE idtombamento=" + idTombamento);
+            if (resultado.first() == true) {
+                idEquipamento = resultado.getInt("idequipamento");
+
+            } else {
+                return 0;
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Equipamento não encontrado!");
+
+        }
+        return idEquipamento;
+    }
+
+    public TipoEquipamentos recuperaNomeEquipamento(int idEq) {
+        TipoEquipamentos auxTipoEquipamentos = new TipoEquipamentos();
+        int auxIdEquipamento = recuperaIdEquipamento(idEq);
+        try {
+            Statement st = conexao.createStatement();
+            System.out.println(idEquipamento);
+            ResultSet resultado = st.executeQuery("SELECT  nomeequipamento FROM equipamentos,descricao WHERE equipamentos.idequipamento=" + auxIdEquipamento);
+            resultado.first();
+            auxTipoEquipamentos.setNomeEquipamento(resultado.getString("nomeequipamento"));
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Equipamento não encontrado!" );
+            return null;
+
+        }
+        return auxTipoEquipamentos;
+    }
+    
+     public int recuperaIdTombamento(int idTombamento) {
+        try {
+            Statement st = conexao.createStatement();
+            ResultSet resultado = st.executeQuery("SELECT * FROM descricao  WHERE idtombamento=" + idTombamento);
+            if (resultado.first() == true) {
+                idTomba = resultado.getInt("idtombamento");
+
+            } else {
+                return 0;
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Equipamento não encontrado!");
+
+        }
+        return idEquipamento;
+    }
+
 }

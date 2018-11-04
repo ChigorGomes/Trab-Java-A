@@ -108,6 +108,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="BUSCAR EQUIPAMENTO"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuscaEquipamentoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonManutencao">
           <Properties>
@@ -121,6 +124,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="GERENCIAMENTO DE MANUTEN&#xc7;&#xc3;O"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGerenciamentoManutencaoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonEditaPerfil">
           <Properties>

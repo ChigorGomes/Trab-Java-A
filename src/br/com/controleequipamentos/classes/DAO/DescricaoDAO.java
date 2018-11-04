@@ -7,6 +7,7 @@ package br.com.controleequipamentos.classes.DAO;
 
 import java.sql.*;
 import br.com.controleequipamentos.classes.Descricao;
+import br.com.controleequipamentos.classes.Manutencao;
 import br.com.controleequipamentos.conexao.BD.BancoDeDados;
 import javax.swing.JOptionPane;
 
@@ -17,11 +18,11 @@ import javax.swing.JOptionPane;
 public class DescricaoDAO extends BancoDeDados {
 
     Descricao descricao = new Descricao();
-    int idEquipa=0;
+    int idEquipa = 0;
+
     public DescricaoDAO() {
         BancoDeDados.conecta();
     }
-
 
     public int buscaEquipamento(String busca) {
 
@@ -38,8 +39,7 @@ public class DescricaoDAO extends BancoDeDados {
         }
         return idEquipa;
     }
-    
-    
+
     public boolean salvar(Descricao desc) {
         try {
             Statement st = conexao.createStatement();
@@ -53,7 +53,7 @@ public class DescricaoDAO extends BancoDeDados {
         }
 
     }
-    
-    
+
+ 
 
 }
