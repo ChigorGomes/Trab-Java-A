@@ -10,19 +10,21 @@ package br.com.controleequipamentos.classes;
  * @author higor
  */
 public class Usuario {
+
     private int idConta;
     private String nome;
     private String usuario;
     private String senha;
     private String tipoUsuario;
 
-    public Usuario(){}
-    
-    public int getIdComta() {
+    public Usuario() {
+    }
+
+    public int getIdConta() {
         return idConta;
     }
 
-    public void setIdComta(int idComta) {
+    public void setIdConta(int idComta) {
         this.idConta = idComta;
     }
 
@@ -57,6 +59,5 @@ public class Usuario {
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
-    
-    
+
 }

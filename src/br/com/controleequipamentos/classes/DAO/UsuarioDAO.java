@@ -8,6 +8,7 @@ package br.com.controleequipamentos.classes.DAO;
 import br.com.controleequipamentos.classes.Usuario;
 import br.com.controleequipamentos.conexao.BD.BancoDeDados;
 import java.sql.*;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -122,6 +123,63 @@ public class UsuarioDAO extends BancoDeDados {
         } catch (SQLException ex) {
             return false;
         }
+    }
+
+    //select nomeequipamento from equipamentos,descricao where  equipamentos.idequipamento= descricao.idequipamento;
+    public boolean alterar(Usuario usu) {
+
+        try {
+            Statement st = conexao.createStatement();
+
+            st.executeUpdate("UPDATE login SET senha='" + usu.getSenha() + "' WHERE idconta=" + usu.getIdConta());
+            JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!");
+
+            return true;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Dados não alterados!");
+            return false;
+        }
+    }
+
+    /**
+     * Método excluir
+     *
+     * @param usu
+     * @return true se foi excluido ou false caso não seja
+     */
+    public boolean excluir(Usuario usu) {
+
+        try {
+            Statement st = conexao.createStatement();
+            st.executeUpdate("DELETE FROM login WHERE idconta=" + usu.getIdConta() + "");
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir!" + ex);
+            return false;
+        }
+
+    }
+
+    public Usuario recuperaDados(String nome) {
+        Usuario usuario = new Usuario();
+        try {
+            Statement st = conexao.createStatement();
+            ResultSet resultado = st.executeQuery("SELECT * FROM login WHERE usuario='" + nome + "'");
+            resultado.first();
+
+            usuario.setIdConta(resultado.getInt("idconta"));
+            usuario.setNome(resultado.getString("nome"));
+            usuario.setSenha(resultado.getString("senha"));
+            usuario.setTipoUsuario(resultado.getString("tipousuario"));
+            usuario.setUsuario(resultado.getString("usuario"));
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!" + ex);
+
+        }
+        return usuario;
     }
 
 }

@@ -18,7 +18,7 @@ public class TelaMenu extends javax.swing.JFrame {
     Usuario user = new Usuario();
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     String aux;
-    TelaCadastroEquipamento cadastroEquipamento = new TelaCadastroEquipamento();
+  
 
     /**
      * Creates new form Menu
@@ -71,6 +71,11 @@ public class TelaMenu extends javax.swing.JFrame {
         jButtonGerenciamentoManutencao.setText("GERENCIAMENTO DE MANUTENÇÃO");
 
         jButtonEditaPerfil.setText("EDITAR PERFIL");
+        jButtonEditaPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditaPerfilActionPerformed(evt);
+            }
+        });
 
         jButtonCadastraTipoEquipamento.setText("CADASTRAR TIPOS DE EQUIPAMENTOS");
         jButtonCadastraTipoEquipamento.addActionListener(new java.awt.event.ActionListener() {
@@ -148,12 +153,12 @@ public class TelaMenu extends javax.swing.JFrame {
     private void jButtonCadastroEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroEquipamentoActionPerformed
         // TODO add your handling code here:
         if (usuarioDAO.controleAcessoUsuarioSecretaria(aux) == true) {
-            if (cadastroEquipamento == null) {
-                cadastroEquipamento.setVisible(true);
-                cadastroEquipamento.setResizable(false);
+            if (new TelaCadastroEquipamento(aux) == null) {
+               new TelaCadastroEquipamento(aux).setVisible(true);
+                new TelaCadastroEquipamento(aux).setResizable(false);
             } else {
-                cadastroEquipamento.setVisible(true);
-                cadastroEquipamento.setResizable(false);
+                new TelaCadastroEquipamento(aux).setVisible(true);
+                new TelaCadastroEquipamento(aux).setResizable(false);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Você não tem permissão!");
@@ -184,6 +189,12 @@ public class TelaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_jButtonManutencaoActionPerformed
+
+    private void jButtonEditaPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditaPerfilActionPerformed
+        // TODO add your handling code here:
+        new TelaEditaCadastro(aux).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonEditaPerfilActionPerformed
 
     /**
      * @param args the command line arguments

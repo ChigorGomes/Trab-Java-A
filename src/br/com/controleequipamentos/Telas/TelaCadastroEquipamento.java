@@ -25,18 +25,23 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     DescricaoDAO descricaoDAO = new DescricaoDAO();
     Vector<TipoEquipamentos> listaEquip = null;
     int cod = 0;
+    String aux;
 
     /**
      * Creates new form TelaCadastroEquipamento
      */
-    public TelaCadastroEquipamento() {
+    public TelaCadastroEquipamento(String nome) {
         initComponents();
-
+        aux=nome;
         listaEquip = equipamentoDAO.mostraEquipamentos();
         DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel(listaEquip);
 
         jComboBoxEquipamentos.setModel(modeloCombo);
 
+    }
+
+    private TelaCadastroEquipamento() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -230,6 +235,8 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
             descricao.setDataDesc(jFormattedTextFieldData.getText());
             descricao.setIdEquipamento(cod);
             descricaoDAO.salvar(descricao);
+            new TelaMenu(aux).setVisible(true);
+            dispose();
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 

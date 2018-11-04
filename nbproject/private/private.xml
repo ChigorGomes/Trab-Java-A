@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/higor/NetBeansProjects/ControleEquipamentos/src/br/com/controleequipamentos/Telas/TelaCadastro.java</file>
             <file>file:/home/higor/NetBeansProjects/ControleEquipamentos/src/br/com/controleequipamentos/Telas/TelaLogin.java</file>
+            <file>file:/home/higor/NetBeansProjects/ControleEquipamentos/src/br/com/controleequipamentos/Telas/TelaCadastro.java</file>
+            <file>file:/home/higor/NetBeansProjects/ControleEquipamentos/src/br/com/controleequipamentos/Telas/TelaBuscaEquipamentos.java</file>
+            <file>file:/home/higor/NetBeansProjects/ControleEquipamentos/src/br/com/controleequipamentos/classes/DAO/DescricaoDAO.java</file>
+            <file>file:/home/higor/NetBeansProjects/ControleEquipamentos/src/br/com/controleequipamentos/Telas/TelaCadastroTipoEquipamento.java</file>
             <file>file:/home/higor/NetBeansProjects/ControleEquipamentos/src/br/com/controleequipamentos/classes/DAO/UsuarioDAO.java</file>
+            <file>file:/home/higor/NetBeansProjects/ControleEquipamentos/src/br/com/controleequipamentos/Telas/TelaGerenciamentoManutencao.java</file>
             <file>file:/home/higor/NetBeansProjects/ControleEquipamentos/src/br/com/controleequipamentos/Telas/TelaMenu.java</file>
+            <file>file:/home/higor/NetBeansProjects/ControleEquipamentos/src/br/com/controleequipamentos/Telas/TelaCadastroEquipamento.java</file>
         </group>
     </open-files>
 </project-private>
