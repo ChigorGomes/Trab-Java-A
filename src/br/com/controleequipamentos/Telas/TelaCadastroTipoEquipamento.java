@@ -45,7 +45,7 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
         jTextFieldNomeEquipamento = new javax.swing.JTextField();
         jButtonSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N

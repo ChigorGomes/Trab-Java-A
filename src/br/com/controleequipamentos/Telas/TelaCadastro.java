@@ -53,6 +53,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabelEmail1 = new javax.swing.JLabel();
         jButtonSalvar = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jLabelLogin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
