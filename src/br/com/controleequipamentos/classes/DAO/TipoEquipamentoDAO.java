@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.controleequipamentos.classes.DAO;
 
 import br.com.controleequipamentos.classes.TipoEquipamentos;
@@ -13,10 +8,6 @@ import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author higor
- */
 public class TipoEquipamentoDAO extends BancoDeDados {
 
     int idEquipamento = 0;

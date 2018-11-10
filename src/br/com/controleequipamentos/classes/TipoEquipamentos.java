@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.controleequipamentos.classes;
 
-/**
- *
- * @author higor
- */
 public class TipoEquipamentos {
     private int idEquipamentos;
     private String nomeEquipamento;
@@ -17,9 +8,7 @@ public class TipoEquipamentos {
         this.idEquipamentos = idEquipamentos;
         this.nomeEquipamento = nomeEquipamento;
     }
-
-    
-    
+      
     public TipoEquipamentos(){}
     
     public int getIdEquipamentos() {
@@ -38,12 +27,7 @@ public class TipoEquipamentos {
         this.nomeEquipamento = nomeEquipamento;
     }
     
-    /**
-     * Pega o nome do médico
-     *
-     * @return String nome do médico
-     */
-    @Override
+   @Override
     public String toString() {
         return this.nomeEquipamento;
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.controleequipamentos.classes.DAO;
 
 import br.com.controleequipamentos.classes.Usuario;
@@ -13,10 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author higor
- */
+
 public class UsuarioDAO extends BancoDeDados {
 
     Usuario usuario = new Usuario();
@@ -25,12 +17,6 @@ public class UsuarioDAO extends BancoDeDados {
         BancoDeDados.conecta();
     }
 
-    /**
-     * Método salvar
-     *
-     * @param usu
-     * @return true se foi salvo ou false caso não seja
-     */
     public boolean salvar(Usuario usu) {
         try {
             Statement st = conexao.createStatement();
@@ -54,13 +40,6 @@ public class UsuarioDAO extends BancoDeDados {
 
     }
 
-    /**
-     * Método acessar
-     *
-     * @param usu
-     * @return true se o usuario e a senha correspondem ao cadastrado no sistema
-     * ou false caso não esteja
-     */
     public boolean acessar(Usuario usu) {
         try {
             Statement st = conexao.createStatement();
@@ -143,12 +122,7 @@ public class UsuarioDAO extends BancoDeDados {
         }
     }
 
-    /**
-     * Método excluir
-     *
-     * @param usu
-     * @return true se foi excluido ou false caso não seja
-     */
+    
     public boolean excluir(Usuario usu) {
 
         try {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.controleequipamentos.classes.DAO;
 
 import br.com.controleequipamentos.classes.Manutencao;
@@ -11,10 +6,6 @@ import br.com.controleequipamentos.conexao.BD.BancoDeDados;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author higor
- */
 public class ManutencaoDAO extends BancoDeDados {
 
     Manutencao manutencao = new Manutencao();
@@ -47,11 +38,7 @@ public class ManutencaoDAO extends BancoDeDados {
             manutencao.setIdTombamento(Integer.parseInt(resultado.getString("idtombamento")));
             manutencao.setDescricaoDefeito(resultado.getString("descricaodefeito"));
             manutencao.setDataDefeito(resultado.getString(("datadefeito")));
-            
-           //manutencao.setDescricaoSolucao(resultado.getString(("descricaosolucao")));
             manutencao.setLoginSolicitante(Integer.parseInt(resultado.getString("idloginsolicitou")));
-           // manutencao.setLoginSolucionador(Integer.parseInt(resultado.getString("idloginsolucionou")));
-          //  manutencao.setDataConserto(resultado.getString(("dataconserto")));
             manutencao.setStatus(resultado.getString(("status")));
 
          
